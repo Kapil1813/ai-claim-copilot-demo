@@ -1,17 +1,6 @@
-# Streamlit framework
-streamlit==1.26.0
-
-# Data manipulation
-pandas==2.1.1
-
-# Plotting and dashboards
-plotly==5.18.0
-
-# OpenAI API client
-openai==2.21.0
-
-# Load environment variables
-python-dotenv==1.0.0
-
-# PDF generation
-fpdf==1.7.2
+streamlit
+openai
+pdfplumber
+pandas
+python-dotenv
+fpdf
