@@ -5,6 +5,4 @@ plotly
 seaborn
 openai
 python-dotenv
-streamlit
-openai
 fpdf
