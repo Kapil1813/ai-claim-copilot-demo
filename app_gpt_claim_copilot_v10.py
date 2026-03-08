@@ -83,20 +83,35 @@ Clinical Note:
 """
 
     try:
+    response = client.chat.completions.create(
+        model="gpt-5-mini",
+        messages=[{"role": "user", "content": prompt}]
+    )
 
-        response=client.chat.completions.create(
-            model="gpt-5-mini",
-            messages=[{"role":"user","content":prompt}]
-        )
+    raw_output = response.choices[0].message.content
 
-        result=json.loads(response.choices[0].message.content)
+    # Debug: show raw GPT response
+    st.write("Raw GPT Response:", raw_output)
 
-        return result["icd"],result["cpt"],result["confidence"],result["explanation"]
+    result = json.loads(raw_output)
 
-    except:
+    return (
+        result.get("icd", ""),
+        result.get("cpt", []),
+        result.get("confidence", 0),
+        result.get("explanation", "")
+    )
 
-        return "E11.9",["83036"],80,"Fallback explanation"
+except Exception as e:
+    st.error("❌ OpenAI API Call Failed")
+    st.error(str(e))
 
+    return (
+        "ERROR",
+        [],
+        0,
+        f"API Error: {str(e)}"
+    )
 
 # ---------------------------
 # Denial Risk Logic
