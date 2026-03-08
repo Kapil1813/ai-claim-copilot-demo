@@ -1,8 +1,6 @@
-streamlit
-pandas
-scikit-learn
-plotly
-seaborn
-openai
-python-dotenv
-fpdf
+streamlit==1.26.0
+pandas==2.1.1
+plotly==5.18.0
+openai==2.21.0
+python-dotenv==1.0.0
+fpdf==1.7.2
